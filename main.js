@@ -31,13 +31,26 @@ const handleAddTask = () => {
         const taskContent     = document.createElement('p');
         taskContent.innerText = inputElement.value; // receives the input content
 
-        // delete icon
-        const deleteItem = document.createElement('i'); // font-awesome icon
-        deleteItem.classList.add('fa-solid');
-        deleteItem.classList.add('fa-delete-left');
+        // icons container
+        const iconContainer = document.createElement('div');
+        iconContainer.classList.add('icon-container');
+
+            // check icon
+            const checkItem = document.createElement('i'); // font-awesome icon
+            checkItem.classList.add('fa-solid');
+            checkItem.classList.add('fa-check');
+
+            iconContainer.appendChild(checkItem);
+
+            // delete icon
+            const deleteItem = document.createElement('i'); // font-awesome icon
+            deleteItem.classList.add('fa-solid');
+            deleteItem.classList.add('fa-delete-left');
+
+            iconContainer.appendChild(deleteItem);
 
     taskItemContainer.appendChild(taskContent);
-    taskItemContainer.appendChild(deleteItem);
+    taskItemContainer.appendChild(iconContainer);
 
     tasksContainer.appendChild(taskItemContainer); // container
 
