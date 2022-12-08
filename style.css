@@ -22,6 +22,9 @@ body {
 
     padding: 1.875rem 2.5rem;
     border-radius: .5rem;
+
+    width: 40%;
+    min-width: 31.25rem;
 }
 
 .new-task-container {
@@ -31,4 +34,53 @@ body {
     padding: 1.875rem 1.25rem;
     border-radius: 0.3125rem;
     /* box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3); */
+}
+
+.new-task-container > .new-task-input {
+    flex: 3;
+
+    padding: 0.75rem;
+    border: 2px solid #323236;
+    border-radius: .35rem;
+    background: none;
+    
+    font-size: 1rem;
+    font-weight: 500;
+    color: #323236;
+
+    outline: none;
+    transition: 0.25s ease-in;
+}
+
+.new-task-container > .new-task-input:focus {
+    border-color: #f79c25;
+    color: #f0cfa2;
+}
+
+.new-task-container > .new-task-button {
+    flex: 1;
+
+    height: 100%;
+    padding: 1rem;
+    margin-left: .85rem;
+
+    border-radius: 0.3125rem;
+    border: none;
+    background-color: #f79c25;    
+    
+    font-size: 1rem;
+    font-weight: 500;
+    color: #15151a;
+
+    cursor: pointer;
+    outline: none;
+}
+
+.tasks-container {
+    background-color: #1f2125;
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.5);
+
+    width: 100%;
+    padding: 30px 20px;
+    border-radius: 7px;
 }
