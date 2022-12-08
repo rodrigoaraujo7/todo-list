@@ -40,6 +40,8 @@ const handleAddTask = () => {
     taskItemContainer.appendChild(deleteItem);
 
     tasksContainer.appendChild(taskItemContainer); // container
+
+    inputElement.value = ''; // removing the input content after add a new task
 }
 
 const handleInputChange = () => {
