@@ -46,30 +46,42 @@ const handleAddTask = () => {
     tasksContainer.appendChild(taskItemContainer); // container
 
     inputElement.value = ''; // removing the input content after add a new task
+
+    updateLocalStorage(); // run local storage
 }
 
+// complete task function
 const handleClick = (taskContent) => {
+    // items of the list inside the <div class="tasks-container"></div>
     const tasks = tasksContainer.childNodes;
 
-    for(const task of tasks) {
+    for(const task of tasks) { // for each item
+        // verify the clicked item
         const currentTaskIsBeingClicked = task.firstChild.isSameNode(taskContent);
 
-        if(currentTaskIsBeingClicked) {
+        if(currentTaskIsBeingClicked) { // toggle the 'completed' class
             task.firstChild.classList.toggle('completed')
         }
     }
+
+    updateLocalStorage(); // run local storage
 }
 
+// delete task function
 const handleDeleteClick = (taskItemContainer, taskContent) => {
+    // items of the list inside the <div class="tasks-container"></div>
     const tasks = tasksContainer.childNodes;
 
-    for(const task of tasks) {
+    for(const task of tasks) { // for each item
+        // verify the clicked item
         const currentTaskIsBeingClicked = task.firstChild.isSameNode(taskContent);
 
-        if(currentTaskIsBeingClicked) {
+        if(currentTaskIsBeingClicked) { // remove then
             taskItemContainer.remove();
         }
     }
+
+    updateLocalStorage(); // run local storage
 }
 
 const handleInputChange = () => { // remove input error tag
@@ -81,3 +93,17 @@ const handleInputChange = () => { // remove input error tag
 
 addTaskButton.addEventListener('click', () => handleAddTask()) // add 'error' class
 inputElement.addEventListener('change', () => handleInputChange()) // remove 'error' class
+
+// (* Local Storage *)
+const updateLocalStorage = () => {
+    const tasks            = tasksContainer.childNodes;
+
+    const localStorageTasks = [... tasks].map(task => {
+        const content     = task.firstChild;
+        const isCompleted = content.classList.contains('completed');
+
+        return {description: content.innerText, isCompleted: isCompleted}
+    });
+
+    localStorage.setItem('tasks', JSON.stringify(localStorageTasks))
+}
