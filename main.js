@@ -114,7 +114,8 @@ const updateLocalStorage = () => {
 // function to recreate the tasks of the localStorage
 const refreshTaskUsingLocalStorage = () => {
     const tasksFromLocalStorage = JSON.parse(localStorage.getItem('tasks'));
-    console.log({ tasksFromLocalStorage });
+
+    if(!tasksFromLocalStorage) return; // prevents bugs 
 
     for(const task of tasksFromLocalStorage) {
         // if validateInput return TRUE
