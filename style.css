@@ -98,6 +98,9 @@ body {
 .tasks-container > .task-item p {
     color: #f0cfa2;
     font-weight: 500;
+    
+    cursor: pointer;
+    transition: 0.35s;
 }
 .tasks-container > .task-item i {
     color: #f79c25;
