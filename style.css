@@ -106,9 +106,8 @@ body {
     
     cursor: pointer;
 }
-.tasks-container > .task-item i.fa-check {
-    color: #f0cfa2;
-}
+
 /* Utility */
 .error { border-color: #eb1f41 !important; }
 .error::placeholder { color: #eb1f41 !important; }
+.completed { text-decoration: line-through; color: #656777 !important; }

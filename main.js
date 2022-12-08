@@ -31,33 +31,34 @@ const handleAddTask = () => {
         const taskContent     = document.createElement('p');
         taskContent.innerText = inputElement.value; // receives the input content
 
-        // icons container
-        const iconContainer = document.createElement('div');
-        iconContainer.classList.add('icon-container');
+        taskContent.addEventListener('click', () => handleClick(taskContent));
+        
+        // delete icon
+        const deleteItem = document.createElement('i'); // font-awesome icon
+        deleteItem.classList.add('fa-solid');
+        deleteItem.classList.add('fa-delete-left');
 
-            // check icon
-            const checkItem = document.createElement('i'); // font-awesome icon
-            checkItem.classList.add('fa-solid');
-            checkItem.classList.add('fa-check');
-
-            iconContainer.appendChild(checkItem);
-
-            // delete icon
-            const deleteItem = document.createElement('i'); // font-awesome icon
-            deleteItem.classList.add('fa-solid');
-            deleteItem.classList.add('fa-delete-left');
-
-            iconContainer.appendChild(deleteItem);
+        deleteItem.addEventListener('click', () => handleDeleteClick());
 
     taskItemContainer.appendChild(taskContent);
-    taskItemContainer.appendChild(iconContainer);
+    taskItemContainer.appendChild(deleteItem);
 
     tasksContainer.appendChild(taskItemContainer); // container
 
     inputElement.value = ''; // removing the input content after add a new task
 }
 
-const handleInputChange = () => {
+const handleClick = (taskContent) => {
+    const tasks = tasksContainer.childNodes;
+
+    for(const task of tasks) {
+        if(task.firstChild.isSameNode(taskContent)) {
+            task.firstChild.classList.toggle('completed')
+        }
+    }
+}
+
+const handleInputChange = () => { // remove input error tag
     const inputIsValid = validateInput();
 
     if(inputIsValid)
